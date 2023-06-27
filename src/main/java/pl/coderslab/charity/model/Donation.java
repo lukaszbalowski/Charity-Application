@@ -1,10 +1,8 @@
 package pl.coderslab.charity.model;
-
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-
+import java.util.List;
 
 
 @Entity
@@ -20,9 +18,19 @@ public class Donation {
     @Column (name="quantity")
     private Integer quantity;
 
-    //todo dodać połączenie one to many z category
+    @ManyToMany
+    @JoinTable (
+            name="donation_category",
+            joinColumns = @JoinColumn(name="donation_id"),
+            inverseJoinColumns = @JoinColumn(name="category_id")
 
-    //todo dodać połączenie one to many z institution
+    )
+
+    private List<Category> categories;
+
+    @ManyToOne
+    @JoinColumn(name="institution_id")
+    private Institution institution;
 
     @Column (name="street")
     private String street;
@@ -41,6 +49,5 @@ public class Donation {
 
     @Column(name="pickup_comment")
     private String pickUpComment;
-
 
 }
