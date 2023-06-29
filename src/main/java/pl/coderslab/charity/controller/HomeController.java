@@ -28,6 +28,9 @@ public class HomeController {
 
         Integer sumOfBags = jdbcTemplate.queryForObject("SELECT SUM(quantity) FROM donations", Integer.class);
         model.addAttribute("sumOfBags", sumOfBags);
+
+        Integer sumOfDonations = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM donations", Integer.class);
+        model.addAttribute("sumOfDonations", sumOfDonations);
         return "index";
     }
 }
