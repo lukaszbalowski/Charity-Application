@@ -8,3 +8,4 @@ Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.
 	* Wskazujemy lokalizację katalogu ze sklonowanym projektem i zatwierdzamy.
 	* Następnie w nowym oknie wybieramy: `Import project from external model` i wskazujemy `Maven`
 	* Wybieramy kolejno opcje: `Next –> Next –> Next –> Finish`
+   * Tutaj znajdzie się opis aplikacji
