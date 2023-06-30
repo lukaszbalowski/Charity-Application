@@ -42,10 +42,10 @@ public class Donation {
     private String zipCode;
 
     @Column(name="pickup_date")
-    private String pickUpDate;  // todo jaki tutaj będzie rodzaj danych LocalDate?
+    private String pickUpDate;  // todo - pamiętaj jaki tu będzie rodzaj danych
 
     @Column(name="pickup_time")
-    private String pickUpTime;  // todo jaki tutaj będzie rodzaj danych LocalTime?
+    private String pickUpTime;  // todo - pamiętaj jaki tu będzie rodzaj danych
 
     @Column(name="pickup_comment")
     private String pickUpComment;
