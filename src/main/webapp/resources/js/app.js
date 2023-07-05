@@ -197,7 +197,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(pickupTime);
                 document.querySelector(".pickupComment").innerText = 'Komentarz: ' + pickupComment;
                 console.log(pickupComment);
-                // document.querySelector(".categories").innerText = ' worków zawierających: ' + categoriesText;
                 console.log(categoriesText);
                 document.querySelector(".quantity").innerText = quantity + ' worków zawierających: ' + categoriesText;
                 console.log(quantity);

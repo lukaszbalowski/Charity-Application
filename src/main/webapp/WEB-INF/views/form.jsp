@@ -235,7 +235,7 @@
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="submit" class="btn">Confirm</button>
+                    <button type="submit" class="btn">Potwierdź</button>
                 </div>
             </div>
         </form>

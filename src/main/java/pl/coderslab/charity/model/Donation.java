@@ -2,6 +2,8 @@ package pl.coderslab.charity.model;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.List;
 
 
@@ -23,7 +25,6 @@ public class Donation {
             name="donation_category",
             joinColumns = @JoinColumn(name="donation_id"),
             inverseJoinColumns = @JoinColumn(name="category_id")
-
     )
 
     private List<Category> categories;
@@ -42,10 +43,11 @@ public class Donation {
     private String zipCode;
 
     @Column(name="pickup_date")
-    private String pickUpDate;  // todo - pamiętaj jaki tu będzie rodzaj danych
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String pickUpDate;
 
     @Column(name="pickup_time")
-    private String pickUpTime;  // todo - pamiętaj jaki tu będzie rodzaj danych
+    private String pickUpTime;
 
     @Column(name="pickup_comment")
     private String pickUpComment;
