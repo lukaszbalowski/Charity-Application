@@ -108,7 +108,7 @@
 <%--                    <label>--%>
                         <c:forEach items="${institutions}" var="institution">
                             <div>
-                                <input type="radio" name="organization" value="${institution.id}" id="organization-${institution.id}">
+                                <input type="radio" name="donation.institution.id" value="${institution.id}" id="organization-${institution.id}">
                                 <label for="organization-${institution.id}" class="checkbox radio"></label>
                                 <div class="description">
                                     <div class="title">${institution.name}</div>

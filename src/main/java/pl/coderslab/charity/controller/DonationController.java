@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
@@ -46,7 +47,9 @@ public class DonationController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String processForm(@ModelAttribute("donation") Donation donation) {
+    public String processForm(@ModelAttribute("donation") Donation donation, @RequestParam("donation.institution.id") Long institutionId) {
+        Institution institution = institutionRepository.findById(institutionId).orElse(null);
+        donation.setInstitution(institution);
         donationRepository.save(donation);
         return "form-confirmation";
     }
