@@ -104,20 +104,34 @@
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
+<%--                <div class="form-group form-group--checkbox">--%>
+<%--&lt;%&ndash;                    <label>&ndash;%&gt;--%>
+<%--                        <c:forEach items="${institutions}" var="institution">--%>
+<%--                            <div>--%>
+<%--                                <input type="radio" name="donation.institution.id" value="${institution.id}" id="organization-${institution.id}">--%>
+<%--                                <label for="organization-${institution.id}" class="checkbox radio"></label>--%>
+<%--                                <div class="description">--%>
+<%--                                    <div class="title" id="institution-name">${institution.name}</div>--%>
+<%--                                    <div class="subtitle">${institution.description}</div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </c:forEach>--%>
+<%--&lt;%&ndash;                    </label>&ndash;%&gt;--%>
+<%--                </div>--%>
+
                 <div class="form-group form-group--checkbox">
-<%--                    <label>--%>
-                        <c:forEach items="${institutions}" var="institution">
-                            <div>
-                                <input type="radio" name="donation.institution.id" value="${institution.id}" id="organization-${institution.id}">
-                                <label for="organization-${institution.id}" class="checkbox radio"></label>
-                                <div class="description">
-                                    <div class="title" id="institution-name">${institution.name}</div>
-                                    <div class="subtitle">${institution.description}</div>
-                                </div>
-                            </div>
-                        </c:forEach>
-<%--                    </label>--%>
+                    <c:forEach items="${institutions}" var="institution">
+                        <label>
+                            <input type="radio" name="donation.institution.id" value="${institution.id}" id="organization-${institution.id}" />
+                            <span class="checkbox radio"></span>
+                            <span class="description">
+        <div class="title">${institution.name}</div>
+        <div class="subtitle">${institution.description}</div>
+      </span>
+                        </label>
+                    </c:forEach>
                 </div>
+
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
