@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
@@ -12,6 +13,16 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="<c:url value="../../resources/css/style.css"/>"/>
+
+
+    <script>
+
+
+
+    </script>
+
+    <script src="<c:url value="../../resources/js/app.js"/>"></script>
+
 </head>
 <body>
 
@@ -41,60 +52,29 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form action="form-confirmation.html" method="post">
+        <form action="form" method="post">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-
                 <div class="form-group form-group--checkbox">
-                    <label>
-                        <input
-                                type="checkbox"
-                                name="categories"
-                                value="clothes-to-use"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="description"
-                        >ubrania, które nadają się do ponownego użycia</span
-                        >
-                    </label>
+
+    <c:forEach var="category" items="${categories}">
+        <label>
+            <input
+                    type="checkbox"
+                    name="categories"
+                    id="categories"
+                    value="${category.id}"
+            />
+            <span class="checkbox"></span>
+            <span class="description">${category.name}</span>
+        </label>
+    </c:forEach>
+
+
+
                 </div>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input
-                                type="checkbox"
-                                name="categories"
-                                value="clothes-useless"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="description">ubrania, do wyrzucenia</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="toys" />
-                        <span class="checkbox"></span>
-                        <span class="description">zabawki</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="books" />
-                        <span class="checkbox"></span>
-                        <span class="description">książki</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="other" />
-                        <span class="checkbox"></span>
-                        <span class="description">inne</span>
-                    </label>
-                </div>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
@@ -103,12 +83,12 @@
 
             <!-- STEP 2 -->
             <div data-step="2">
-                <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
+                <h3>Podaj liczbę worków (60 litrów), w które spakowałeś/aś rzeczy:</h3>
 
                 <div class="form-group form-group--inline">
                     <label>
-                        Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1" />
+                        Liczba worków (60 litrów):
+                        <input type="number" name="quantity" id="quantity" step="1" min="1" />
                     </label>
                 </div>
 
@@ -125,31 +105,18 @@
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
                 <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="organization" value="old" />
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title">Fundacja “Bez domu”</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc dla osób nie posiadających miejsca
-                    zamieszkania
-                  </div>
-                </span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="organization" value="old" />
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title">Fundacja “Dla dzieci"</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-                    życiowej.
-                  </div>
-                </span>
-                    </label>
+<%--                    <label>--%>
+                        <c:forEach items="${institutions}" var="institution">
+                            <div>
+                                <input type="radio" name="organization" value="${institution.id}" id="organization-${institution.id}">
+                                <label for="organization-${institution.id}" class="checkbox radio"></label>
+                                <div class="description">
+                                    <div class="title">${institution.name}</div>
+                                    <div class="subtitle">${institution.description}</div>
+                                </div>
+                            </div>
+                        </c:forEach>
+<%--                    </label>--%>
                 </div>
 
                 <div class="form-group form-group--buttons">
@@ -166,44 +133,43 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="address" /> </label>
+                            <label> Ulica <form:input path="donation.street" id="street" name="street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="city" /> </label>
-                        </div>
-
-                        <div class="form-group form-group--inline">
-                            <label>
-                                Kod pocztowy <input type="text" name="postcode" />
-                            </label>
+                            <label> Miasto <form:input path="donation.city" id="city" name="city"  /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="phone" />
+                                Kod pocztowy <form:input path="donation.zipCode"  id="zipCode" name="zipCode" />
                             </label>
                         </div>
+
+
                     </div>
 
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="data" /> </label>
+                            <label> Data <form:input type="date" path="donation.pickUpDate" id="pickupDate" name="pickupDate" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="time" /> </label>
+                            <label> Godzina <form:input type="time" path="donation.pickUpTime" id="pickupTime" name="pickupTIme" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="more_info" rows="5"></textarea>
+                                <form:textarea path="donation.pickUpComment" rows="5" id="pickupComment" name="pickupComment" />
                             </label>
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="button" class="btn next-step">Dalej</button>
@@ -212,23 +178,21 @@
 
             <!-- STEP 6 -->
             <div data-step="5">
-                <h3>Podsumowanie Twojej darowizny</h3>
+                <h3>Przekazujesz</h3>
 
                 <div class="summary">
                     <div class="form-section">
-                        <h4>Oddajesz:</h4>
+                        <h4>Giving:</h4>
                         <ul>
                             <li>
-                                <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span class="icon icon-bag"></span><span class="quantity"></span>
+
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
+                                >(institution name)</span  <%--institution name--%>
                                 >
                             </li>
                         </ul>
@@ -236,21 +200,21 @@
 
                     <div class="form-section form-section--columns">
                         <div class="form-section--column">
-                            <h4>Adres odbioru:</h4>
+                            <h4>Miejsce odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li class="street"></li>
+                                <li class="city"></li>
+                                <li class="zipCode"></li>
+
                             </ul>
                         </div>
 
                         <div class="form-section--column">
-                            <h4>Termin odbioru:</h4>
+                            <h4>Odbiór paczki:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li class="pickupDate"></li>
+                                <li class="pickupTime"></li>
+                                <li class="pickupComment" ></li>
                             </ul>
                         </div>
                     </div>
@@ -258,7 +222,7 @@
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="submit" class="btn">Potwierdzam</button>
+                    <button type="submit" class="btn">Confirm</button>
                 </div>
             </div>
         </form>
@@ -267,7 +231,7 @@
 
 <jsp:include page="footer.jsp"/>
 
-<script src="../../resources/js/app.js"></script>
+
 
 </body>
 </html>
