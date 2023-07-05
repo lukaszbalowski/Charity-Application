@@ -177,17 +177,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 let pickupTime = document.getElementById("pickupTime").value;
                 let pickupComment = document.getElementById("pickupComment").value;
                 let quantity = document.getElementById("quantity").value;
-                // let selectedCategories = Array.from(document.querySelectorAll('input[name="categories"]:checked'))
-                //     .map(category => category.nextElementSibling.innerText);
-                // let categoriesText = selectedCategories.join(', ');
-
                 let selectedCategories = Array.from(document.querySelectorAll('input[id="categories"]:checked'))
                     .map(category => category.nextElementSibling.nextElementSibling.innerText);
                 let categoriesText = selectedCategories.join(', ');
+                let selectedInstitution = document.querySelector('input[name="donation.institution.id"]:checked');
+                let institutionName = selectedInstitution.nextElementSibling.nextElementSibling.querySelector('.title').textContent;
 
 
                 document.querySelector(".street").innerText = 'Ulica: ' + street;
                 console.log(street);
+                console.log('wybrana instytucja: ' + institutionName);
                 document.querySelector(".city").innerText ='Miasto: ' + city;
                 console.log(city);
                 document.querySelector(".zipCode").innerText = 'Kod pocztowy: ' + zipCode;
@@ -202,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log(categoriesText);
                 document.querySelector(".quantity").innerText = quantity + ' worków zawierających: ' + categoriesText;
                 console.log(quantity);
+                document.querySelector(".institution").innerText = 'Dla fundacji: ' + institutionName;
 
             }
             pokazPodsumowanie();

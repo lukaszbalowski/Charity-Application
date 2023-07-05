@@ -111,7 +111,7 @@
                                 <input type="radio" name="donation.institution.id" value="${institution.id}" id="organization-${institution.id}">
                                 <label for="organization-${institution.id}" class="checkbox radio"></label>
                                 <div class="description">
-                                    <div class="title">${institution.name}</div>
+                                    <div class="title" id="institution-name">${institution.name}</div>
                                     <div class="subtitle">${institution.description}</div>
                                 </div>
                             </div>
@@ -191,8 +191,7 @@
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >(institution name)</span  <%--institution name--%>
+                                <span class="institution">(institution name)</span  <%--institution name--%>
                                 >
                             </li>
                         </ul>
