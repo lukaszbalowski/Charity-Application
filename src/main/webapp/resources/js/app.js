@@ -185,22 +185,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
                 document.querySelector(".street").innerText = 'Ulica: ' + street;
-                console.log(street);
+
                 console.log('wybrana instytucja: ' + institutionName);
                 document.querySelector(".city").innerText ='Miasto: ' + city;
-                console.log(city);
+                // console.log(city);
                 document.querySelector(".zipCode").innerText = 'Kod pocztowy: ' + zipCode;
-                console.log(zipCode);
+                // console.log(zipCode);
                 document.querySelector(".pickupDate").innerText = 'Data odbioru: ' + pickupDate;
-                console.log(pickupDate);
+                // console.log(pickupDate);
                 document.querySelector(".pickupTime").innerText = 'Godzina odbioru: ' + pickupTime;
-                console.log(pickupTime);
+                // console.log(pickupTime);
                 document.querySelector(".pickupComment").innerText = 'Komentarz: ' + pickupComment;
-                console.log(pickupComment);
-                console.log(categoriesText);
-                document.querySelector(".quantity").innerText = quantity + ' worków zawierających: ' + categoriesText;
+                // console.log(pickupComment);
+                // console.log(categoriesText);
+                // document.querySelector(".quantity").innerText = quantity + ' worków zawierających: ' + categoriesText;
+                if (quantity === 1) {
+                    document.querySelector(".quantity").innerText = quantity + ' worek zawierający: ' + categoriesText;
+                } else if (quantity > 1 && quantity <= 4) {
+                    document.querySelector(".quantity").innerText = quantity + ' worki zawierające: ' + categoriesText;
+                } else if (quantity > 4) {
+                    document.querySelector(".quantity").innerText = quantity + ' worków zawierających: ' + categoriesText;
+                }
                 console.log(quantity);
-                document.querySelector(".institution").innerText = 'Dla fundacji: ' + institutionName;
+                document.querySelector(".institution").innerText = 'Odbiorca:  ' + institutionName;
 
             }
             pokazPodsumowanie();

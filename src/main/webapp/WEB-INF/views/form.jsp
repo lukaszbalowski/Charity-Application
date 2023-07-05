@@ -27,7 +27,7 @@
 <body>
 
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="form_header.jsp"/>
 
 <section class="form--steps">
     <div class="form--steps-instructions">
@@ -192,11 +192,11 @@
 
             <!-- STEP 6 -->
             <div data-step="5">
-                <h3>Przekazujesz</h3>
+                <h3>Podsumowanie Twojej darowizny</h3>
 
                 <div class="summary">
                     <div class="form-section">
-                        <h4>Giving:</h4>
+                        <h4>Przekazujesz:</h4>
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span><span class="quantity"></span>
