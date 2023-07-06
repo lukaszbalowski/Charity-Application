@@ -1,2 +1,9 @@
-/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/HomeController.java
+/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/model/Category.java
 /home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/CharityApplication.java
+/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/repository/InstitutionRepository.java
+/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/controller/DonationController.java
+/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/model/Institution.java
+/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/model/Donation.java
+/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/repository/DonationRepository.java
+/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/repository/CategoryRepository.java
+/home/balos/Documents/Java_Proj/CharityProject/src/main/java/pl/coderslab/charity/controller/HomeController.java

@@ -1,2 +1,5 @@
 /PortfolioLab_HTML_Layout-master/
 /target/
+/src/test/
+/src/main/resources/application-credentials.properties
+

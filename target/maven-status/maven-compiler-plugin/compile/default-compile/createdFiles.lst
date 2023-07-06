@@ -1,2 +1,9 @@
+pl/coderslab/charity/repository/InstitutionRepository.class
+pl/coderslab/charity/model/Institution.class
+pl/coderslab/charity/model/Donation.class
 pl/coderslab/charity/CharityApplication.class
-pl/coderslab/charity/HomeController.class
+pl/coderslab/charity/controller/HomeController.class
+pl/coderslab/charity/repository/CategoryRepository.class
+pl/coderslab/charity/model/Category.class
+pl/coderslab/charity/controller/DonationController.class
+pl/coderslab/charity/repository/DonationRepository.class
